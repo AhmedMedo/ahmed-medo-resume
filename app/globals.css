@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #141210;
+  color: #f2ede3;
+}
+
+::selection {
+  background-color: #c9a227;
+  color: #141210;
+}
+
+/* Editorial drop cap for the first bio paragraph */
+.drop-cap::first-letter {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 3.2em;
+  line-height: 0.8;
+  float: left;
+  padding-right: 0.1em;
+  padding-top: 0.06em;
+  color: #c9a227;
+}
