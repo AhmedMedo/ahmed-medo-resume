@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { DownloadIcon } from "./icons/DownloadIcon";
 import { profile } from "@/lib/data/resume";
+import { asset } from "@/lib/asset";
 
 export function Contact() {
   return (
@@ -34,7 +35,7 @@ export function Contact() {
         </a>
 
         <a
-          href={profile.cvUrl}
+          href={asset(profile.cvUrl)}
           download={profile.cvFileName}
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-strong px-7 py-3 font-sans text-sm font-semibold text-white transition hover:bg-accent"
         >

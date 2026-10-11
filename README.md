@@ -47,6 +47,15 @@ npm run build
 npm run start
 ```
 
+## Deploying to GitHub Pages
+
+Pages only serves static files, so the workflow in `.github/workflows/deploy.yml` builds a static export (`STATIC_EXPORT=true`) and publishes `out/`. The `/api/chat` route is removed in CI only, and the chat UI is currently disabled anyway.
+
+1. In the repo go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions** (not "Deploy from a branch").
+2. Push to `main`. The **Deploy to GitHub Pages** workflow runs and publishes the site at `https://<user>.github.io/<repo>/`.
+
+The repo sub-path is injected as `NEXT_PUBLIC_BASE_PATH`. Wrap any new raw URL strings (`fetch`, `useGLTF`, `<a href>` to files in `public/`) with `asset()` from `lib/asset.ts` so they work under the sub-path.
+
 ## Deploying to Vercel
 
 1. Push this repo to GitHub/GitLab/Bitbucket.

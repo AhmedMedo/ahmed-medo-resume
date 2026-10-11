@@ -3,6 +3,7 @@
 import { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useIdleBob } from "@/hooks/useIdleBob";
+import { asset } from "@/lib/asset";
 
 // Ready Player Me / Avaturn exports are a raw Mixamo-style skeleton in its
 // default T-pose bind position — there's no baked "resting" animation clip.
@@ -44,7 +45,7 @@ function relaxTPose(scene: import("three").Object3D) {
 // isolated in its own component so only this subtree can trigger the
 // Suspense/ErrorBoundary fallback in Avatar.tsx.
 export function AvatarModel({ active }: { active: boolean }) {
-  const { scene } = useGLTF("/models/avatar.glb");
+  const { scene } = useGLTF(asset("/models/avatar.glb"));
   const groupRef = useIdleBob(active);
 
   useLayoutEffect(() => {

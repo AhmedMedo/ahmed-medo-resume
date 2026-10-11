@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { AvatarLoadingSkeleton } from "./AvatarLoadingSkeleton";
 import { DownloadIcon } from "./icons/DownloadIcon";
 import { profile } from "@/lib/data/resume";
+import { asset } from "@/lib/asset";
 
 const Avatar = dynamic(() => import("./Avatar"), {
   ssr: false,
@@ -63,7 +64,7 @@ export function Hero() {
               View experience
             </a>
             <a
-              href={profile.cvUrl}
+              href={asset(profile.cvUrl)}
               download={profile.cvFileName}
               className="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-7 py-3 font-sans text-sm font-medium text-fg transition hover:border-accent hover:text-accent"
             >

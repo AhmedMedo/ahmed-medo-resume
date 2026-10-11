@@ -38,3 +38,6 @@ Tailwind theme in `tailwind.config.ts` is a dark "Violet Ink + Peach" palette wi
 Fonts (Bricolage Grotesque display at 600-700, Inter body, JetBrains Mono labels) are set up in `lib/fonts.ts` and exposed as `font-display` / `font-sans` / `font-mono` through CSS variables. Avoid weights above 700 and all-caps tracked labels; they were removed for readability. Tech/skill lists put a `{" "}` after each item span so they can wrap on narrow screens. Scroll fade-ins use `components/AnimatedSection.tsx`. Path alias `@/*` maps to the repo root.
 
 Don't run `npm run build` while `npm run dev` is running: both write to `.next`, and the build breaks the dev server's CSS. Stop the dev server (or clear `.next` and restart it) afterwards.
+
+### Deployment (GitHub Pages)
+`.github/workflows/deploy.yml` builds with `STATIC_EXPORT=true` and `NEXT_PUBLIC_BASE_PATH=/<repo-name>` (see `next.config.mjs`), deletes `app/api` (server routes can't be statically exported), and publishes `out/`. Locally and on Vercel the app runs as a normal server with `/api/chat`. Raw URL strings must go through `asset()` in `lib/asset.ts`; Next only auto-prefixes `<Link>`/`next/image`/its own assets. To test the Pages build without disturbing a running dev server, build in a copy of the repo (it writes `.next`/`out`).
