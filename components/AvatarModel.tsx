@@ -3,6 +3,7 @@
 import { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useIdleBob } from "@/hooks/useIdleBob";
+import { useHeadLook } from "@/hooks/useHeadLook";
 import { asset } from "@/lib/asset";
 
 // Ready Player Me / Avaturn exports are a raw Mixamo-style skeleton in its
@@ -47,6 +48,7 @@ function relaxTPose(scene: import("three").Object3D) {
 export function AvatarModel({ active }: { active: boolean }) {
   const { scene } = useGLTF(asset("/models/avatar.glb"));
   const groupRef = useIdleBob(active);
+  useHeadLook(scene);
 
   useLayoutEffect(() => {
     relaxTPose(scene);
