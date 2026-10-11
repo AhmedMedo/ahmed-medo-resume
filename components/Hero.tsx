@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { AvatarLoadingSkeleton } from "./AvatarLoadingSkeleton";
+import { DownloadIcon } from "./icons/DownloadIcon";
+import { profile } from "@/lib/data/resume";
 
 const Avatar = dynamic(() => import("./Avatar"), {
   ssr: false,
@@ -29,40 +31,48 @@ const MARQUEE_ITEMS = [
 
 export function Hero() {
   return (
-    <section id="hero" className="relative">
+    <section id="hero" className="relative overflow-x-clip">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-14 pt-12 md:grid-cols-[1.1fr_0.9fr] md:pb-20 md:pt-16">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-gold">
+          <span className="font-mono text-[13px] tracking-wide text-accent">
             Senior Software Engineer
           </span>
 
-          <h1 className="mt-5 font-display text-7xl font-black leading-[0.85] tracking-tight text-cream sm:text-8xl lg:text-9xl">
+          <h1 className="mt-5 font-display text-7xl font-bold leading-[1.05] tracking-tight text-fg sm:text-8xl lg:text-8xl">
             Ahmed
             <br />
-            <span className="text-gold">Alaa</span>
+            <span className="text-accent">Alaa</span>
           </h1>
 
-          <div className="mt-7 h-px w-24 bg-gold" />
+          <div className="mt-7 h-px w-24 bg-accent" />
 
-          <p className="mt-6 max-w-md font-sans text-lg leading-relaxed text-cream-muted">
-            Building <span className="font-semibold text-gold">backend systems</span>, APIs, and
+          <p className="mt-6 max-w-md font-sans text-lg leading-relaxed text-fg-muted">
+            Building <span className="font-semibold text-accent">backend systems</span>, APIs, and
             AI-powered features for fintech, telecom, and commerce that hold up in production.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#experience"
-              className="rounded-full bg-gold px-7 py-3 font-sans text-sm font-semibold text-espresso transition hover:bg-gold-bright"
+              className="rounded-full bg-accent px-7 py-3 font-sans text-sm font-semibold text-canvas transition hover:bg-accent-bright"
             >
               View experience
             </a>
             <a
+              href={profile.cvUrl}
+              download={profile.cvFileName}
+              className="inline-flex items-center gap-2 rounded-full border border-fg-muted/40 px-7 py-3 font-sans text-sm font-medium text-fg transition hover:border-accent hover:text-accent"
+            >
+              <DownloadIcon className="h-4 w-4" />
+              Download CV
+            </a>
+            <a
               href="#contact"
-              className="rounded-full border border-gold-deep px-7 py-3 font-sans text-sm font-medium text-cream transition hover:border-gold hover:text-gold"
+              className="rounded-full border border-fg-muted/40 px-7 py-3 font-sans text-sm font-medium text-fg transition hover:border-accent hover:text-accent"
             >
               Get in touch
             </a>
@@ -73,15 +83,19 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          className="mx-auto w-full max-w-sm"
+          className="relative mx-auto w-full max-w-sm"
         >
-          <div className="relative h-[420px] overflow-hidden rounded-t-full border border-gold-deep/60 bg-espresso-raised sm:h-[480px]">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-6 inset-y-10 -z-10 rounded-full bg-accent/20 blur-3xl"
+          />
+          <div className="relative h-[420px] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] sm:h-[480px]">
             <Avatar />
           </div>
           {/* AI concierge caption — re-enable once the chat feature is back
-          <div className="flex items-center justify-center gap-2 border-x border-b border-gold-deep/60 bg-espresso-raised py-3">
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-cream-muted">
+          <div className="flex items-center justify-center gap-2 border-x border-b border-accent/60 bg-surface py-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="font-mono text-xs tracking-wide text-fg-muted">
               {profile.assistantName} · AI Concierge
             </span>
           </div>
@@ -96,9 +110,9 @@ export function Hero() {
               {MARQUEE_ITEMS.map((item) => (
                 <span
                   key={`${copy}-${item}`}
-                  className="mx-6 font-mono text-xs uppercase tracking-[0.25em] text-cream-muted"
+                  className="mx-6 font-mono text-[13px] tracking-wide text-fg-muted"
                 >
-                  {item} <span className="ml-10 text-gold">·</span>
+                  {item} <span className="ml-10 text-spark">·</span>
                 </span>
               ))}
             </div>

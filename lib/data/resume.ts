@@ -40,6 +40,9 @@ export const profile = {
   gitlabUrl: "https://gitlab.com/AhmedMedo",
   github: "github.com/AhmedMedo",
   githubUrl: "https://github.com/AhmedMedo",
+  // Served from /public. Replace the file to update the CV.
+  cvUrl: "/Ahmed_Alaa.pdf",
+  cvFileName: "Ahmed_Alaa_CV.pdf",
   bioParagraphs: [
     "Ahmed is a Senior Software Engineer with 9+ years of software development experience across backend engineering, web applications, APIs, cloud infrastructure, telecom platforms, fintech, e-commerce, and distributed systems.",
     "His hands-on expertise spans PHP, Laravel, Symfony, Node.js, Python, React, Vue.js, AWS, Docker, Kubernetes, and CI/CD. Today he builds backend services and AI-powered features for the Baltic Exchange's market data platform.",

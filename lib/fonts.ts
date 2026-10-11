@@ -1,23 +1,26 @@
-import { Archivo, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 
-// Bold display sans for headlines — big, heavy, tight leading.
-export const fontDisplay = Archivo({
+// Characterful display face for headlines. Kept to 600-700: the heavier
+// weights crowd letterforms and tire the eye.
+export const fontDisplay = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
 
-export const fontSans = Instrument_Sans({
+// Neutral, small-size-friendly face for all body copy.
+export const fontSans = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-sans",
   display: "swap",
 });
 
-export const fontMono = IBM_Plex_Mono({
+// Mono accents for tags, dates, and labels.
+export const fontMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });

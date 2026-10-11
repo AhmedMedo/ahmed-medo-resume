@@ -63,6 +63,6 @@ hooks/           # useIdleBob, useSpeechRecognition
 lib/
   data/          # resume.ts (single source of truth) + knowledge-base.ts (chat context)
   chat-context.tsx  # shared chat state (Hero CTA + floating widget)
-  fonts.ts       # next/font setup (Fraunces / Inter / IBM Plex Mono)
+  fonts.ts       # next/font setup (Bricolage Grotesque / Inter / JetBrains Mono)
 public/models/   # drop avatar.glb here
 ```

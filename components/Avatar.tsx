@@ -24,10 +24,10 @@ interface AvatarProps {
 export default function Avatar({ active = false }: AvatarProps) {
   return (
     <Canvas camera={{ position: [0, 0.15, 1.7], fov: 28 }} dpr={[1, 2]}>
-      <ambientLight intensity={0.85} color="#f5ead0" />
-      <directionalLight position={[3, 4, 2]} intensity={1.4} color="#e3be4f" />
-      <directionalLight position={[-3, 1, -2]} intensity={0.5} color="#c9a227" />
-      <directionalLight position={[0, 1, 4]} intensity={0.55} color="#f5ead0" />
+      <ambientLight intensity={0.85} color="#eae6ff" />
+      <directionalLight position={[3, 4, 2]} intensity={1.4} color="#f1edff" />
+      <directionalLight position={[-3, 1, -2]} intensity={0.9} color="#a78bfa" />
+      <directionalLight position={[0, 1, 4]} intensity={0.45} color="#fdba74" />
 
       <AvatarErrorBoundary fallback={<AvatarFallback active={active} />}>
         <Suspense fallback={<AvatarFallback active={active} />}>

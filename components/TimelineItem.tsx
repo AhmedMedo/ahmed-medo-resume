@@ -18,37 +18,38 @@ export function TimelineItem({ entry, index }: TimelineItemProps) {
       className={`py-8 ${index > 0 ? "border-t border-line" : ""}`}
     >
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-display text-2xl font-extrabold text-cream">
+        <h3 className="font-display text-2xl font-bold text-fg">
           {entry.company}
         </h3>
-        <span className="font-mono text-xs tracking-widest text-gold">
+        <span className="font-mono text-[13px] tracking-wide text-accent">
           {entry.startDate} — {entry.endDate}
         </span>
       </div>
-      <p className="mt-1 font-sans text-sm text-cream-muted">
+      <p className="mt-1 font-sans text-sm text-fg-muted">
         {entry.title} · {entry.location}
       </p>
 
       <div className="mt-5 space-y-5">
         {entry.projects.map((project) => (
-          <div key={project.name} className="border-l border-gold-deep/50 pl-4">
-            <h4 className="font-sans text-sm font-semibold text-cream">{project.name}</h4>
-            <p className="mt-1 font-sans text-sm leading-relaxed text-cream-muted">
+          <div key={project.name} className="border-l border-accent/40 pl-4">
+            <h4 className="font-sans text-sm font-semibold text-fg">{project.name}</h4>
+            <p className="mt-1 font-sans text-[15px] leading-[1.7] text-fg-muted">
               {project.description}
             </p>
             {project.responsibilities && (
-              <p className="mt-2 font-sans text-sm leading-relaxed text-cream-muted">
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
+              <p className="mt-2 font-sans text-[15px] leading-[1.7] text-fg-muted">
+                <span className="font-mono text-[13px] tracking-wide text-accent">
                   Responsibilities
                 </span>{" "}
                 {project.responsibilities}
               </p>
             )}
-            <p className="mt-2 font-mono text-xs leading-relaxed text-cream-muted">
+            <p className="mt-2 font-mono text-[13px] leading-[1.7] text-fg-muted">
               {project.tech.map((tech, j) => (
                 <span key={tech}>
                   {tech}
-                  {j < project.tech.length - 1 && <span className="mx-1.5 text-gold-deep">·</span>}
+                  {j < project.tech.length - 1 && <span className="mx-1.5 text-accent">·</span>}
+                  {" "}
                 </span>
               ))}
             </p>

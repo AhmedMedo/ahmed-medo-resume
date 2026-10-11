@@ -7,23 +7,23 @@ html {
 }
 
 body {
-  background-color: #141210;
-  color: #f2ede3;
+  background-color: #0f0d1a;
+  color: #edebf7;
 }
 
 ::selection {
-  background-color: #c9a227;
-  color: #141210;
+  background-color: #a78bfa;
+  color: #0f0d1a;
 }
 
 /* Editorial drop cap for the first bio paragraph */
 .drop-cap::first-letter {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 3.2em;
   line-height: 0.8;
   float: left;
   padding-right: 0.1em;
   padding-top: 0.06em;
-  color: #c9a227;
+  color: #fdba74;
 }

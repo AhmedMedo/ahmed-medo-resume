@@ -13,19 +13,20 @@ export function ProjectCard({ project, index }: { project: PersonalProject; inde
       className="group border-t border-line py-7"
     >
       <div className="flex items-baseline gap-5">
-        <span className="font-display text-3xl font-extrabold text-gold">{project.year}</span>
+        <span className="font-display text-3xl font-bold text-accent">{project.year}</span>
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-2xl font-extrabold text-cream transition group-hover:text-gold">
+          <h3 className="font-display text-2xl font-bold text-fg transition group-hover:text-accent">
             {project.title}
           </h3>
-          <p className="mt-2 font-sans text-sm leading-relaxed text-cream-muted">
+          <p className="mt-2 font-sans text-[15px] leading-[1.7] text-fg-muted">
             {project.description}
           </p>
-          <p className="mt-3 font-mono text-xs leading-relaxed text-cream-muted">
+          <p className="mt-3 font-mono text-[13px] leading-[1.7] text-fg-muted">
             {project.tech.map((tech, j) => (
               <span key={tech}>
                 {tech}
-                {j < project.tech.length - 1 && <span className="mx-1.5 text-gold-deep">·</span>}
+                {j < project.tech.length - 1 && <span className="mx-1.5 text-accent">·</span>}
+                {" "}
               </span>
             ))}
           </p>

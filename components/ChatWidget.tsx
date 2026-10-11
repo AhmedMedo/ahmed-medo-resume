@@ -85,19 +85,19 @@ export function ChatWidget() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.28, ease: "easeOut" }}
-              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-gold-deep/60 bg-espresso"
+              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-accent/60 bg-canvas"
             >
-              <div className="flex items-center justify-between border-b border-line bg-espresso-raised px-5 py-4">
+              <div className="flex items-center justify-between border-b border-line bg-surface px-5 py-4">
                 <div>
-                  <p className="font-display text-xl text-cream">{profile.assistantName}</p>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cream-muted">
+                  <p className="font-display text-xl text-fg">{profile.assistantName}</p>
+                  <p className="font-mono text-xs tracking-wide text-fg-muted">
                     {status === "thinking" ? "thinking…" : "AI concierge · ready"}
                   </p>
                 </div>
                 <button
                   onClick={closeChat}
                   aria-label="Close chat"
-                  className="rounded-full border border-line p-2 text-cream-muted transition hover:border-gold hover:text-gold"
+                  className="rounded-full border border-line p-2 text-fg-muted transition hover:border-accent hover:text-accent"
                 >
                   <CloseIcon className="h-4 w-4" />
                 </button>
@@ -121,7 +121,7 @@ export function ChatWidget() {
                   }}
                   placeholder={`Ask ${profile.assistantName} anything…`}
                   rows={1}
-                  className="max-h-24 flex-1 resize-none rounded-xl border border-line bg-espresso-raised px-3 py-2.5 font-sans text-sm text-cream outline-none placeholder:text-cream-muted/60 focus:border-gold"
+                  className="max-h-24 flex-1 resize-none rounded-xl border border-line bg-surface px-3 py-2.5 font-sans text-sm text-fg outline-none placeholder:text-fg-muted/60 focus:border-accent"
                 />
                 <button
                   type="button"
@@ -131,8 +131,8 @@ export function ChatWidget() {
                   aria-label="Voice input"
                   className={`shrink-0 rounded-full border p-2.5 transition ${
                     isListening
-                      ? "border-gold bg-gold/15 text-gold"
-                      : "border-line text-cream-muted hover:border-gold hover:text-gold"
+                      ? "border-accent bg-accent/15 text-accent"
+                      : "border-line text-fg-muted hover:border-accent hover:text-accent"
                   } disabled:cursor-not-allowed disabled:opacity-30`}
                 >
                   <MicIcon className="h-4 w-4" />
@@ -141,7 +141,7 @@ export function ChatWidget() {
                   type="submit"
                   disabled={!input.trim() || status === "thinking"}
                   aria-label="Send message"
-                  className="shrink-0 rounded-full bg-gold p-2.5 text-espresso transition hover:bg-gold-bright disabled:cursor-not-allowed disabled:opacity-30"
+                  className="shrink-0 rounded-full bg-accent p-2.5 text-canvas transition hover:bg-accent-bright disabled:cursor-not-allowed disabled:opacity-30"
                 >
                   <SendIcon className="h-4 w-4" />
                 </button>
@@ -155,11 +155,11 @@ export function ChatWidget() {
         onClick={toggleChat}
         aria-label={`Ask ${profile.assistantName}`}
         title={`Ask ${profile.assistantName}`}
-        className="fixed bottom-6 right-6 z-30 flex h-14 w-14 items-center justify-center rounded-full border border-gold bg-espresso-raised text-gold shadow-lg shadow-black/40 transition hover:bg-gold hover:text-espresso"
+        className="fixed bottom-6 right-6 z-30 flex h-14 w-14 items-center justify-center rounded-full border border-accent bg-surface text-accent shadow-lg shadow-black/40 transition hover:bg-accent hover:text-canvas"
       >
         <ChatGlyph className="h-6 w-6" />
         <span
-          className={`absolute right-1 top-1 h-2.5 w-2.5 rounded-full border-2 border-espresso bg-gold ${
+          className={`absolute right-1 top-1 h-2.5 w-2.5 rounded-full border-2 border-canvas bg-accent ${
             status === "thinking" ? "animate-pulse-dot" : ""
           }`}
         />

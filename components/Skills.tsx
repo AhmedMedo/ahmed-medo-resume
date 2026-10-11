@@ -19,16 +19,17 @@ export function Skills() {
               i > 0 ? "border-t border-line" : ""
             }`}
           >
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold">
+            <span className="font-mono text-[13px] tracking-wide text-accent">
               {category.label}
             </span>
-            <p className="font-sans text-sm leading-relaxed text-cream">
+            <p className="font-sans text-[15px] leading-[1.7] text-fg">
               {category.skills.map((skill, j) => (
                 <span key={skill}>
                   {skill}
                   {j < category.skills.length - 1 && (
-                    <span className="mx-2 text-gold-deep">·</span>
+                    <span className="mx-2 text-accent">·</span>
                   )}
+                  {" "}
                 </span>
               ))}
             </p>
