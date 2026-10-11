@@ -1,9 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DownloadIcon } from "./icons/DownloadIcon";
+import { MailIcon } from "./icons/MailIcon";
+import { PhoneIcon } from "./icons/PhoneIcon";
+import { LinkedInIcon } from "./icons/LinkedInIcon";
+import { GitHubIcon } from "./icons/GitHubIcon";
 import { profile } from "@/lib/data/resume";
-import { asset } from "@/lib/asset";
+
+const CONTACT_LINKS = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, Icon: MailIcon, external: false },
+  { label: "Phone", value: profile.phone, href: `tel:${profile.phone}`, Icon: PhoneIcon, external: false },
+  { label: "LinkedIn", value: "ahmedalaa100", href: profile.linkedinUrl, Icon: LinkedInIcon, external: true },
+  { label: "GitHub", value: "AhmedMedo", href: profile.githubUrl, Icon: GitHubIcon, external: true },
+];
 
 export function Contact() {
   return (
@@ -27,42 +36,31 @@ export function Contact() {
           Let&rsquo;s build <span className="text-accent">something.</span>
         </h2>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-8 inline-block break-all font-display text-2xl font-bold underline decoration-accent decoration-2 underline-offset-8 transition hover:text-accent-bright sm:text-3xl"
-        >
-          {profile.email}
-        </a>
+        <p className="mt-5 max-w-xl font-sans text-base leading-[1.7] text-fg-muted">
+          Have a project or role in mind? Reach out through any of these.
+        </p>
 
-        <a
-          href={asset(profile.cvUrl)}
-          download={profile.cvFileName}
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-strong px-7 py-3 font-sans text-sm font-semibold text-white transition hover:bg-accent"
-        >
-          <DownloadIcon className="h-4 w-4" />
-          Download CV
-        </a>
-
-        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-mono text-sm">
-          <a href={`tel:${profile.phone}`} className="transition hover:text-accent-bright">
-            {profile.phone}
-          </a>
-          <a
-            href={profile.linkedinUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="transition hover:text-accent-bright"
-          >
-            {profile.linkedin}
-          </a>
-          <a
-            href={profile.gitlabUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="transition hover:text-accent-bright"
-          >
-            {profile.gitlab}
-          </a>
+        <div className="mt-10 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
+          {CONTACT_LINKS.map(({ label, value, href, Icon, external }) => (
+            <a
+              key={label}
+              href={href}
+              {...(external && { target: "_blank", rel: "noreferrer" })}
+              className="group flex items-center gap-4 rounded-2xl border border-line bg-canvas/60 p-4 transition hover:-translate-y-0.5 hover:border-accent/60 hover:bg-canvas"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition group-hover:bg-accent group-hover:text-canvas">
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className="min-w-0">
+                <span className="block font-mono text-xs tracking-wide text-fg-muted">
+                  {label}
+                </span>
+                <span className="block truncate font-sans text-sm font-medium text-fg transition group-hover:text-accent-bright">
+                  {value}
+                </span>
+              </span>
+            </a>
+          ))}
         </div>
 
         {/* "Ask Medo about fit" CTA — re-enable once the chat feature is back
