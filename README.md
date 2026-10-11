@@ -54,6 +54,8 @@ Pages only serves static files, so the workflow in `.github/workflows/deploy.yml
 1. In the repo go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions** (not "Deploy from a branch").
 2. Push to `main`. The **Deploy to GitHub Pages** workflow runs and publishes the site at `https://<user>.github.io/<repo>/`.
 
+**If GitHub Actions is unavailable** (e.g. "account is locked due to a billing issue"), publish from your machine instead: run `npm run deploy:pages` (builds a static export and force-pushes it to the `gh-pages` branch), then set **Settings → Pages → Source** to **Deploy from a branch → `gh-pages` / (root)**. `DRY_RUN=1 npm run deploy:pages` builds without pushing.
+
 The repo sub-path is injected as `NEXT_PUBLIC_BASE_PATH`. Wrap any new raw URL strings (`fetch`, `useGLTF`, `<a href>` to files in `public/`) with `asset()` from `lib/asset.ts` so they work under the sub-path.
 
 ## Deploying to Vercel
